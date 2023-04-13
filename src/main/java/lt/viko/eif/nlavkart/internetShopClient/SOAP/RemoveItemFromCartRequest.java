@@ -1,5 +1,5 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -20,6 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="itemId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,14 +32,16 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "accountId",
-    "username"
+    "username",
+    "itemId"
 })
-@XmlRootElement(name = "getAccountRequest")
-public class GetAccountRequest {
+@XmlRootElement(name = "removeItemFromCartRequest")
+public class RemoveItemFromCartRequest {
 
     protected int accountId;
     @XmlElement(required = true)
     protected String username;
+    protected int itemId;
 
     /**
      * Gets the value of the accountId property.
@@ -78,6 +81,22 @@ public class GetAccountRequest {
      */
     public void setUsername(String value) {
         this.username = value;
+    }
+
+    /**
+     * Gets the value of the itemId property.
+     * 
+     */
+    public int getItemId() {
+        return itemId;
+    }
+
+    /**
+     * Sets the value of the itemId property.
+     * 
+     */
+    public void setItemId(int value) {
+        this.itemId = value;
     }
 
 }

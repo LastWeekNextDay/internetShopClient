@@ -1,5 +1,5 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import java.util.ArrayList;
 import java.util.List;

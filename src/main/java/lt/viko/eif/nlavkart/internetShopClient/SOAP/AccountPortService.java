@@ -1,5 +1,5 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,14 +17,14 @@ import jakarta.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "AccountPortService", targetNamespace = "www.example.com", wsdlLocation = "http://localhost:8080/ws/Account.wsdl")
+@WebServiceClient(name = "AccountPortService", targetNamespace = "http://www.example.com/", wsdlLocation = "http://localhost:8080/ws/Account.wsdl")
 public class AccountPortService
     extends Service
 {
 
     private final static URL ACCOUNTPORTSERVICE_WSDL_LOCATION;
     private final static WebServiceException ACCOUNTPORTSERVICE_EXCEPTION;
-    private final static QName ACCOUNTPORTSERVICE_QNAME = new QName("www.example.com", "AccountPortService");
+    private final static QName ACCOUNTPORTSERVICE_QNAME = new QName("http://www.example.com/", "AccountPortService");
 
     static {
         URL url = null;
@@ -69,7 +69,7 @@ public class AccountPortService
      */
     @WebEndpoint(name = "AccountPortSoap11")
     public AccountPort getAccountPortSoap11() {
-        return super.getPort(new QName("www.example.com", "AccountPortSoap11"), AccountPort.class);
+        return super.getPort(new QName("http://www.example.com/", "AccountPortSoap11"), AccountPort.class);
     }
 
     /**
@@ -81,7 +81,7 @@ public class AccountPortService
      */
     @WebEndpoint(name = "AccountPortSoap11")
     public AccountPort getAccountPortSoap11(WebServiceFeature... features) {
-        return super.getPort(new QName("www.example.com", "AccountPortSoap11"), AccountPort.class, features);
+        return super.getPort(new QName("http://www.example.com/", "AccountPortSoap11"), AccountPort.class, features);
     }
 
     private static URL __getWsdlLocation() {

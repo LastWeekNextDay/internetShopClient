@@ -1,9 +1,8 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
@@ -18,7 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cart" type="{generatedsoap}Cart"/>
+ *         &lt;element name="itemId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +28,27 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "cart"
+    "itemId"
 })
-@XmlRootElement(name = "getCartOfAccountResponse")
-public class GetCartOfAccountResponse {
+@XmlRootElement(name = "getItemRequest")
+public class GetItemRequest {
 
-    @XmlElement(required = true)
-    protected Cart cart;
+    protected int itemId;
 
     /**
-     * Gets the value of the cart property.
+     * Gets the value of the itemId property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Cart }
-     *     
      */
-    public Cart getCart() {
-        return cart;
+    public int getItemId() {
+        return itemId;
     }
 
     /**
-     * Sets the value of the cart property.
+     * Sets the value of the itemId property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Cart }
-     *     
      */
-    public void setCart(Cart value) {
-        this.cart = value;
+    public void setItemId(int value) {
+        this.itemId = value;
     }
 
 }

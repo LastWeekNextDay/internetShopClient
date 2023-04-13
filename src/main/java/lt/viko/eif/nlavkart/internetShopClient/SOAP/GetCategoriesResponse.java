@@ -1,26 +1,26 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import java.util.ArrayList;
 import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Cart complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Cart">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="items" type="{generatedsoap}Item" maxOccurs="unbounded"/>
+ *         &lt;element name="categories" type="{generatedsoap}Category" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,59 +30,42 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Cart", propOrder = {
-    "id",
-    "items"
+@XmlType(name = "", propOrder = {
+    "categories"
 })
-public class Cart {
+@XmlRootElement(name = "getCategoriesResponse")
+public class GetCategoriesResponse {
 
-    protected int id;
     @XmlElement(required = true)
-    protected List<Item> items;
+    protected List<Category> categories;
 
     /**
-     * Gets the value of the id property.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
-
-    /**
-     * Gets the value of the items property.
+     * Gets the value of the categories property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the items property.
+     * This is why there is not a <CODE>set</CODE> method for the categories property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getItems().add(newItem);
+     *    getCategories().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Item }
+     * {@link Category }
      * 
      * 
      */
-    public List<Item> getItems() {
-        if (items == null) {
-            items = new ArrayList<Item>();
+    public List<Category> getCategories() {
+        if (categories == null) {
+            categories = new ArrayList<Category>();
         }
-        return this.items;
+        return this.categories;
     }
 
 }

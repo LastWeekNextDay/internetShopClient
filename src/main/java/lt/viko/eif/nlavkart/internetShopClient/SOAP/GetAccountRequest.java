@@ -1,5 +1,5 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -33,8 +33,8 @@ import jakarta.xml.bind.annotation.XmlType;
     "accountId",
     "username"
 })
-@XmlRootElement(name = "getCartOfAccountRequest")
-public class GetCartOfAccountRequest {
+@XmlRootElement(name = "getAccountRequest")
+public class GetAccountRequest {
 
     protected int accountId;
     @XmlElement(required = true)

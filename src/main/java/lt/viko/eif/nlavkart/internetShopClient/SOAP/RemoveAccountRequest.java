@@ -1,5 +1,5 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -18,8 +18,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ack" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="accountId" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,54 +30,54 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "ack",
-    "message"
+    "accountId",
+    "username"
 })
-@XmlRootElement(name = "removeAccountResponse")
-public class RemoveAccountResponse {
+@XmlRootElement(name = "removeAccountRequest")
+public class RemoveAccountRequest {
 
-    protected boolean ack;
+    protected int accountId;
     @XmlElement(required = true)
-    protected String message;
+    protected String username;
 
     /**
-     * Gets the value of the ack property.
+     * Gets the value of the accountId property.
      * 
      */
-    public boolean isAck() {
-        return ack;
+    public int getAccountId() {
+        return accountId;
     }
 
     /**
-     * Sets the value of the ack property.
+     * Sets the value of the accountId property.
      * 
      */
-    public void setAck(boolean value) {
-        this.ack = value;
+    public void setAccountId(int value) {
+        this.accountId = value;
     }
 
     /**
-     * Gets the value of the message property.
+     * Gets the value of the username property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getMessage() {
-        return message;
+    public String getUsername() {
+        return username;
     }
 
     /**
-     * Sets the value of the message property.
+     * Sets the value of the username property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setMessage(String value) {
-        this.message = value;
+    public void setUsername(String value) {
+        this.username = value;
     }
 
 }

@@ -1,5 +1,5 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +18,8 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="account" type="{generatedsoap}Account"/>
+ *         &lt;element name="ack" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,36 +30,54 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "account"
+    "ack",
+    "message"
 })
-@XmlRootElement(name = "getAccountResponse")
-public class GetAccountResponse {
+@XmlRootElement(name = "removeAccountResponse")
+public class RemoveAccountResponse {
 
+    protected boolean ack;
     @XmlElement(required = true)
-    protected Account account;
+    protected String message;
 
     /**
-     * Gets the value of the account property.
+     * Gets the value of the ack property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Account }
-     *     
      */
-    public Account getAccount() {
-        return account;
+    public boolean isAck() {
+        return ack;
     }
 
     /**
-     * Sets the value of the account property.
+     * Sets the value of the ack property.
+     * 
+     */
+    public void setAck(boolean value) {
+        this.ack = value;
+    }
+
+    /**
+     * Gets the value of the message property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Account }
+     *     {@link String }
      *     
      */
-    public void setAccount(Account value) {
-        this.account = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }

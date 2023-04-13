@@ -1,26 +1,25 @@
 
-package lt.viko.eif.nlavkart.internetShopClient;
+package lt.viko.eif.nlavkart.internetShopClient.SOAP;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Account complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Account">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="username" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="cart" type="{generatedsoap}Cart"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,37 +29,17 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Account", propOrder = {
-    "id",
+@XmlType(name = "", propOrder = {
     "username",
-    "password",
-    "cart"
+    "password"
 })
-public class Account {
+@XmlRootElement(name = "createAccountRequest")
+public class CreateAccountRequest {
 
-    protected int id;
     @XmlElement(required = true)
     protected String username;
     @XmlElement(required = true)
     protected String password;
-    @XmlElement(required = true)
-    protected Cart cart;
-
-    /**
-     * Gets the value of the id property.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
 
     /**
      * Gets the value of the username property.
@@ -108,30 +87,6 @@ public class Account {
      */
     public void setPassword(String value) {
         this.password = value;
-    }
-
-    /**
-     * Gets the value of the cart property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Cart }
-     *     
-     */
-    public Cart getCart() {
-        return cart;
-    }
-
-    /**
-     * Sets the value of the cart property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Cart }
-     *     
-     */
-    public void setCart(Cart value) {
-        this.cart = value;
     }
 
 }
