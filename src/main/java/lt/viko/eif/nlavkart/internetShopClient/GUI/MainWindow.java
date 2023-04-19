@@ -3,6 +3,7 @@ package lt.viko.eif.nlavkart.internetShopClient.GUI;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.AccountLine;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.AccountLineListRenderer;
 import lt.viko.eif.nlavkart.internetShopClient.Main;
+import lt.viko.eif.nlavkart.internetShopClient.SOAP.Account;
 import lt.viko.eif.nlavkart.internetShopClient.SOAP.GetAccountRequest;
 import lt.viko.eif.nlavkart.internetShopClient.SOAP.GetAccountResponse;
 import lt.viko.eif.nlavkart.internetShopClient.SOAP.GetAccountsResponse;
@@ -14,8 +15,11 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-public class MainWindow {
+public class MainWindow implements AbstractWindow{
+    private int numOfAccountsInList;
+    private ArrayList<Account> listOfAccounts;
     private JButton createAccountButton;
     private JButton viewItemsButton;
     private JTextArea accountIdFinderTextBox;
@@ -23,17 +27,20 @@ public class MainWindow {
     private JButton viewAllAccountsButton;
     private JPanel MainPanel;
     private JList list1;
+    private JFrame frame;
+    private DefaultListModel<AccountLine> listModel;
     private JScrollPane scrollPane;
 
     public MainWindow() {
-        JFrame frame = new JFrame("MainWindow");
+        frame = new JFrame("MainWindow");
         frame.setContentPane(MainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        listOfAccounts = new ArrayList<>();
 
         scrollPane.setViewportView(list1);
-        DefaultListModel<AccountLine> listModel = new DefaultListModel<>();
+        listModel = new DefaultListModel<>();
         list1.setModel(listModel);
         list1.setLayoutOrientation(JList.VERTICAL);
         list1.setCellRenderer(new AccountLineListRenderer());
@@ -78,7 +85,9 @@ public class MainWindow {
                     JOptionPane.showMessageDialog(null, "Account not found.");
                     return;
                 }
+                listOfAccounts.clear();
                 listModel.addElement(new AccountLine(response.getAccount()));
+                listOfAccounts.add(response.getAccount());
             }
         });
         viewAllAccountsButton.addMouseListener(new MouseAdapter() {
@@ -89,8 +98,10 @@ public class MainWindow {
                 InteractClass interaction = new InteractClass();
                 interaction.init();
                 GetAccountsResponse response = interaction.getAccounts();
+                listOfAccounts.clear();
                 for (int i = 0; i < response.getAccounts().size(); i++) {
                     listModel.addElement(new AccountLine(response.getAccounts().get(i)));
+                    listOfAccounts.add(response.getAccounts().get(i));
                 }
             }
         });
@@ -111,9 +122,23 @@ public class MainWindow {
                     return;
                 }
                 AccountLine accountLine = (AccountLine) list1.getSelectedValue();
-                new AccountWindow(list1.getSelectedIndex(), accountLine.account);
+                numOfAccountsInList = listOfAccounts.size();
+                new AccountWindow(accountLine.account, listOfAccounts, MainWindow.this);
             }
         });
     }
 
+    @Override
+    public void update() {
+       if (!frame.isVisible()){
+           frame.setVisible(true);
+       }
+       if (listOfAccounts.size() != numOfAccountsInList) {
+           listModel.clear();
+           for (Account account : listOfAccounts) {
+               listModel.addElement(new AccountLine(account));
+           }
+           numOfAccountsInList = listOfAccounts.size();
+       }
+    }
 }
