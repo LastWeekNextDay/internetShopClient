@@ -26,4 +26,8 @@ public class InteractClass {
     public RemoveAccountResponse removeAccount(RemoveAccountRequest removeAccountRequest) {
         return port.removeAccount(removeAccountRequest);
     }
+
+    public CreateAccountResponse createAccount(CreateAccountRequest request1) {
+        return port.createAccount(request1);
+    }
 }
