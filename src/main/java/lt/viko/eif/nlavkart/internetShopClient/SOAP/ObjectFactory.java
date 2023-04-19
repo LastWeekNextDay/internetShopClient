@@ -78,6 +78,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RemoveItemResponse }
+     * 
+     */
+    public RemoveItemResponse createRemoveItemResponse() {
+        return new RemoveItemResponse();
+    }
+
+    /**
      * Create an instance of {@link GetCategoriesRequest }
      * 
      */
@@ -91,6 +99,14 @@ public class ObjectFactory {
      */
     public GetAccountRequest createGetAccountRequest() {
         return new GetAccountRequest();
+    }
+
+    /**
+     * Create an instance of {@link RemoveItemRequest }
+     * 
+     */
+    public RemoveItemRequest createRemoveItemRequest() {
+        return new RemoveItemRequest();
     }
 
     /**
