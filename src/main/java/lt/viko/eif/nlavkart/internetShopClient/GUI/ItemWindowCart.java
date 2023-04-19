@@ -4,17 +4,16 @@ import lt.viko.eif.nlavkart.internetShopClient.SOAP.*;
 import lt.viko.eif.nlavkart.internetShopClient.SOAP.forClient.InteractClass;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ItemWindow{
+public class ItemWindowCart {
     private JPanel itemWindowPane;
     private JLabel nameLabel;
     private JButton deleteButton;
 
-    public ItemWindow(Account account, Item item, AbstractWindow previousWindow) {
-        JFrame frame = new JFrame("ItemWindow");
+    public ItemWindowCart(Account account, Item item, AbstractWindow previousWindow) {
+        JFrame frame = new JFrame("ItemWindowCart");
         frame.setContentPane(itemWindowPane);
         frame.setSize(150, 200);
         frame.setLocationRelativeTo(null);

@@ -1,7 +1,5 @@
 package lt.viko.eif.nlavkart.internetShopClient.GUI;
 
-import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.AccountLine;
-import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.AccountLineListRenderer;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.ItemLine;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.ItemLineListRenderer;
 import lt.viko.eif.nlavkart.internetShopClient.SOAP.Account;
@@ -56,7 +54,7 @@ public class CartWindow implements AbstractWindow {
                         return;
                     }
                     ItemLine itemLine = (ItemLine) list1.getSelectedValue();
-                    new ItemWindow(account, itemLine.item, CartWindow.this);
+                    new ItemWindowCart(account, itemLine.item, CartWindow.this);
                     if (!account.getCart().getItems().contains(itemLine.item)) {
                         listModel.removeElement(itemLine);
                     }
