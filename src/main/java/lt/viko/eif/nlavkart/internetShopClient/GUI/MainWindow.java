@@ -89,6 +89,7 @@ public class MainWindow implements AbstractWindow{
                 listOfAccounts.clear();
                 listModel.addElement(new AccountLine(response.getAccount()));
                 listOfAccounts.add(response.getAccount());
+                update();
             }
         });
         viewAllAccountsButton.addMouseListener(new MouseAdapter() {
@@ -112,7 +113,6 @@ public class MainWindow implements AbstractWindow{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 accountIdFinderTextBox.setText("");
-                update();
             }
         });
         list1.addListSelectionListener(new ListSelectionListener() {
