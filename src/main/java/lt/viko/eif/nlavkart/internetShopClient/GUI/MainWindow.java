@@ -35,6 +35,7 @@ public class MainWindow implements AbstractWindow{
         frame = new JFrame("MainWindow");
         frame.setContentPane(MainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
         listOfAccounts = new ArrayList<>();
@@ -49,7 +50,7 @@ public class MainWindow implements AbstractWindow{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                // create account
+                new CreateAccountWindow();
             }
         });
 
@@ -103,6 +104,7 @@ public class MainWindow implements AbstractWindow{
                     listModel.addElement(new AccountLine(response.getAccounts().get(i)));
                     listOfAccounts.add(response.getAccounts().get(i));
                 }
+                update();
             }
         });
         accountIdFinderTextBox.addMouseListener(new MouseAdapter() {
@@ -110,6 +112,7 @@ public class MainWindow implements AbstractWindow{
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 accountIdFinderTextBox.setText("");
+                update();
             }
         });
         list1.addListSelectionListener(new ListSelectionListener() {
@@ -130,15 +133,16 @@ public class MainWindow implements AbstractWindow{
 
     @Override
     public void update() {
-       if (!frame.isVisible()){
-           frame.setVisible(true);
-       }
-       if (listOfAccounts.size() != numOfAccountsInList) {
-           listModel.clear();
-           for (Account account : listOfAccounts) {
-               listModel.addElement(new AccountLine(account));
-           }
-           numOfAccountsInList = listOfAccounts.size();
-       }
+        if (!frame.isVisible()){
+            frame.setVisible(true);
+        }
+        if (listOfAccounts.size() != numOfAccountsInList) {
+            listModel.clear();
+            for (Account account : listOfAccounts) {
+                listModel.addElement(new AccountLine(account));
+            }
+            numOfAccountsInList = listOfAccounts.size();
+        }
+        frame.pack();
     }
 }
