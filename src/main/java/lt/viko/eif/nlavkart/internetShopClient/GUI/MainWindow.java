@@ -58,7 +58,7 @@ public class MainWindow implements AbstractWindow{
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                // view items
+                new ViewItemsWindow();
             }
         });
 
