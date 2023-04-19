@@ -30,4 +30,8 @@ public class InteractClass {
     public CreateAccountResponse createAccount(CreateAccountRequest request1) {
         return port.createAccount(request1);
     }
+
+    public GetCategoriesResponse getCategories(GetCategoriesRequest getCategoriesRequest) {
+        return port.getCategories(getCategoriesRequest);
+    }
 }
