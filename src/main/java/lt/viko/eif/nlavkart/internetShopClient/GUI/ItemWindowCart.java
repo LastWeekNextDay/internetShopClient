@@ -33,6 +33,7 @@ public class ItemWindowCart {
                 if (response.isAck()){
                     account.getCart().getItems().remove(item);
                     previousWindow.update();
+                    JOptionPane.showMessageDialog(null, "Item removed from cart");
                     frame.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error: " + response.getMessage());
