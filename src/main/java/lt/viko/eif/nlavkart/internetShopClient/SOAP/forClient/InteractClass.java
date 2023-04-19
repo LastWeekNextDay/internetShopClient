@@ -22,4 +22,8 @@ public class InteractClass {
     public RemoveItemFromCartResponse removeItemFromCart(RemoveItemFromCartRequest removeItemFromCartRequest) {
         return port.removeItemFromCart(removeItemFromCartRequest);
     }
+
+    public RemoveAccountResponse removeAccount(RemoveAccountRequest removeAccountRequest) {
+        return port.removeAccount(removeAccountRequest);
+    }
 }
