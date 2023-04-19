@@ -34,4 +34,16 @@ public class InteractClass {
     public GetCategoriesResponse getCategories(GetCategoriesRequest getCategoriesRequest) {
         return port.getCategories(getCategoriesRequest);
     }
+
+    public GetItemsResponse getItems(GetItemsRequest getItemsRequest) {
+        return port.getItems(getItemsRequest);
+    }
+
+    public RemoveItemResponse deleteItem(RemoveItemRequest removeItemRequest) {
+        return port.removeItem(removeItemRequest);
+    }
+
+    public AddItemToCartResponse addItemToCart(AddItemToCartRequest addItemToCartRequest) {
+        return port.addItemToCart(addItemToCartRequest);
+    }
 }
