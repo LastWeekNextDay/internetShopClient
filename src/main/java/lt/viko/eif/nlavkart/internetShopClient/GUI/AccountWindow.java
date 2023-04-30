@@ -63,10 +63,6 @@ public class AccountWindow {
                 super.mouseClicked(e);
                 JavaXml transformer = new JavaXml(Account.class);
                 transformer.save(account, "src/main/resources/print.xml");
-                // create two options dialog with one saying "HTML" and the other "PDF"
-                // if HTML is selected, open the file in the default browser
-                // if PDF is selected, open the file in the default PDF viewer
-                // if neither is selected, do nothing
                 String[] options = {"HTML", "PDF"};
                 int choice = JOptionPane.showOptionDialog(null, "Choose format", "Print",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);

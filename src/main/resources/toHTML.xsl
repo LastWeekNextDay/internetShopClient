@@ -56,28 +56,30 @@
                     </tr>
                 </table>
                 <div class="cart-header">Cart</div>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                    </tr>
-                    <xsl:for-each select="/ns2:Account/cart/items">
+                <xsl:if test="/ns2:Account/cart/items">
+                    <table>
                         <tr>
-                            <td><xsl:value-of select="id"/></td>
-                            <td><xsl:value-of select="name"/></td>
-                            <td><xsl:value-of select="description"/></td>
-                            <td><xsl:value-of select="category/name"/></td>
-                            <td><xsl:value-of select="price"/></td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Price</th>
                         </tr>
-                    </xsl:for-each>
-                    <tr class="cart-total">
-                        <th colspan="4">Total</th>
-                        <td><xsl:value-of select="sum(/ns2:Account/cart/items/price)"/></td>
-                    </tr>
-                </table>
+                            <xsl:for-each select="/ns2:Account/cart/items">
+                                <tr>
+                                    <td><xsl:value-of select="id"/></td>
+                                    <td><xsl:value-of select="name"/></td>
+                                    <td><xsl:value-of select="description"/></td>
+                                    <td><xsl:value-of select="category/name"/></td>
+                                    <td><xsl:value-of select="price"/></td>
+                                </tr>
+                            </xsl:for-each>
+                            <tr class="cart-total">
+                                <th colspan="4">Total</th>
+                                <td><xsl:value-of select="sum(/ns2:Account/cart/items/price)"/></td>
+                            </tr>
+                    </table>
+                </xsl:if>
             </body>
         </html>
     </xsl:template>
