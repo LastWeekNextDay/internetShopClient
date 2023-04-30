@@ -10,7 +10,6 @@ import org.apache.fop.apps.FOPException;
 import javax.swing.*;
 import javax.xml.transform.TransformerException;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
