@@ -1,15 +1,18 @@
 package lt.viko.eif.nlavkart.internetShopClient.GUI;
 
+import lt.viko.eif.nlavkart.internetShopClient.AbstractInteractor.AbstractInteractor;
+import lt.viko.eif.nlavkart.internetShopClient.GUI.Inheritances.ServiceUsageVar;
+import lt.viko.eif.nlavkart.internetShopClient.GUI.Inheritances.UpdateFunc;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.ItemLine;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.ItemLineListRenderer;
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.*;
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.forClient.InteractClass;
+import lt.viko.eif.nlavkart.internetShopClient.REST.forClient.InteractClassRest;
+import lt.viko.eif.nlavkart.internetShopClient.SOAP.forClient.InteractClassSoap;
+import lt.viko.eif.nlavkart.internetShopClient.generated.*;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class ViewItemsWindow implements AbstractWindow {
+public class ViewItemsWindow extends ServiceUsageVar implements UpdateFunc {
     private ArrayList<Item> items;
     private int itemsSize;
     private JFrame frame;
@@ -24,13 +27,15 @@ public class ViewItemsWindow implements AbstractWindow {
 
     private DefaultComboBoxModel<String> comboBoxModel;
 
-    public ViewItemsWindow() {
+    public ViewItemsWindow(boolean useSoap) {
         frame = new JFrame("ViewItemsWindow");
         frame.setContentPane(panel);
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
         frame.setSize(350, 365);
+
+        setIsSoapUsed(useSoap);
 
         items = new ArrayList<>();
 
@@ -44,8 +49,12 @@ public class ViewItemsWindow implements AbstractWindow {
 
         comboBoxModel = new DefaultComboBoxModel<>();
         comboBox1.setModel(comboBoxModel);
-        InteractClass interactClass = new InteractClass();
-        interactClass.init();
+        AbstractInteractor interactClass;
+        if (getIsSoapUsed()){
+            interactClass = new InteractClassSoap();
+        } else {
+            interactClass = new InteractClassRest();
+        }
         GetCategoriesRequest getCategoriesRequest = new GetCategoriesRequest();
         GetCategoriesResponse getCategoriesResponse = interactClass.getCategories(getCategoriesRequest);
         comboBoxModel.addElement("All");
@@ -88,7 +97,7 @@ public class ViewItemsWindow implements AbstractWindow {
                     return;
                 }
                 ItemLine itemLine = (ItemLine) list1.getSelectedValue();
-                new ItemWindowItems(items, itemLine.item, ViewItemsWindow.this);
+                new ItemWindowItems(items, itemLine.item, ViewItemsWindow.this, getIsSoapUsed());
             }
         });
         frame.pack();

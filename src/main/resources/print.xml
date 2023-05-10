@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
 <ns2:Account xmlns:ns2="generatedsoap">
-    <id>102</id>
-    <username>vitold</username>
-    <password>vitold</password>
+    <id>302</id>
+    <username>test</username>
+    <password>test</password>
     <cart>
-        <id>102</id>
+        <id>302</id>
     </cart>
 </ns2:Account>

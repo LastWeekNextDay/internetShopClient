@@ -7,6 +7,7 @@ import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
 import jakarta.jws.soap.SOAPBinding;
 import jakarta.xml.bind.annotation.XmlSeeAlso;
+import lt.viko.eif.nlavkart.internetShopClient.generated.*;
 
 
 /**
@@ -27,7 +28,7 @@ public interface AccountPort {
      * 
      * @param getAccountRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.GetAccountResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.GetAccountResponse
      */
     @WebMethod
     @WebResult(name = "getAccountResponse", targetNamespace = "generatedsoap", partName = "getAccountResponse")
@@ -39,7 +40,7 @@ public interface AccountPort {
      * 
      * @param getCategoriesRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.GetCategoriesResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.GetCategoriesResponse
      */
     @WebMethod
     @WebResult(name = "getCategoriesResponse", targetNamespace = "generatedsoap", partName = "getCategoriesResponse")
@@ -51,7 +52,7 @@ public interface AccountPort {
      * 
      * @param getAccountsRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.GetAccountsResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.GetAccountsResponse
      */
     @WebMethod
     @WebResult(name = "getAccountsResponse", targetNamespace = "generatedsoap", partName = "getAccountsResponse")
@@ -63,7 +64,7 @@ public interface AccountPort {
      * 
      * @param removeItemRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.RemoveItemResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.RemoveItemResponse
      */
     @WebMethod
     @WebResult(name = "removeItemResponse", targetNamespace = "generatedsoap", partName = "removeItemResponse")
@@ -75,7 +76,7 @@ public interface AccountPort {
      * 
      * @param addItemToCartRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.AddItemToCartResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.AddItemToCartResponse
      */
     @WebMethod
     @WebResult(name = "addItemToCartResponse", targetNamespace = "generatedsoap", partName = "addItemToCartResponse")
@@ -87,7 +88,7 @@ public interface AccountPort {
      * 
      * @param createAccountRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.CreateAccountResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.CreateAccountResponse
      */
     @WebMethod
     @WebResult(name = "createAccountResponse", targetNamespace = "generatedsoap", partName = "createAccountResponse")
@@ -99,7 +100,7 @@ public interface AccountPort {
      * 
      * @param getItemsRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.GetItemsResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.GetItemsResponse
      */
     @WebMethod
     @WebResult(name = "getItemsResponse", targetNamespace = "generatedsoap", partName = "getItemsResponse")
@@ -111,7 +112,7 @@ public interface AccountPort {
      * 
      * @param removeItemFromCartRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.RemoveItemFromCartResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.RemoveItemFromCartResponse
      */
     @WebMethod
     @WebResult(name = "removeItemFromCartResponse", targetNamespace = "generatedsoap", partName = "removeItemFromCartResponse")
@@ -123,7 +124,7 @@ public interface AccountPort {
      * 
      * @param removeAccountRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.RemoveAccountResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.RemoveAccountResponse
      */
     @WebMethod
     @WebResult(name = "removeAccountResponse", targetNamespace = "generatedsoap", partName = "removeAccountResponse")
@@ -135,7 +136,7 @@ public interface AccountPort {
      * 
      * @param getItemRequest
      * @return
-     *     returns lt.viko.eif.nlavkart.internetShopClient.SOAP.GetItemResponse
+     *     returns lt.viko.eif.nlavkart.internetShopClient.generated.GetItemResponse
      */
     @WebMethod
     @WebResult(name = "getItemResponse", targetNamespace = "generatedsoap", partName = "getItemResponse")

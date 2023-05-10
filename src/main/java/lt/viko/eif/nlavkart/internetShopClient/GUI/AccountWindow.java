@@ -1,10 +1,14 @@
 package lt.viko.eif.nlavkart.internetShopClient.GUI;
 
+import lt.viko.eif.nlavkart.internetShopClient.AbstractInteractor.AbstractInteractor;
+import lt.viko.eif.nlavkart.internetShopClient.GUI.Inheritances.ServiceUsageVar;
+import lt.viko.eif.nlavkart.internetShopClient.GUI.Inheritances.UpdateFunc;
 import lt.viko.eif.nlavkart.internetShopClient.JavaXml;
 import lt.viko.eif.nlavkart.internetShopClient.Printer;
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.Account;
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.RemoveAccountRequest;
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.forClient.InteractClass;
+import lt.viko.eif.nlavkart.internetShopClient.REST.forClient.InteractClassRest;
+import lt.viko.eif.nlavkart.internetShopClient.generated.Account;
+import lt.viko.eif.nlavkart.internetShopClient.generated.RemoveAccountRequest;
+import lt.viko.eif.nlavkart.internetShopClient.SOAP.forClient.InteractClassSoap;
 import org.apache.fop.apps.FOPException;
 
 import javax.swing.*;
@@ -16,7 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AccountWindow {
+public class AccountWindow extends ServiceUsageVar {
 
     private JPanel windowPane;
     private JButton cartButton;
@@ -24,10 +28,12 @@ public class AccountWindow {
     private JButton printButton;
     private JLabel nameLabel;
 
-    AbstractWindow previousWindow;
+    UpdateFunc previousWindow;
 
-    public AccountWindow(Account account, ArrayList<Account> listOfAccounts, AbstractWindow previousWindow) {
+    public AccountWindow(Account account, ArrayList<Account> listOfAccounts, UpdateFunc previousWindow,
+                         boolean useSoap) {
         this.previousWindow = previousWindow;
+        setIsSoapUsed(useSoap);
         JFrame frame = new JFrame("AccountWindow");
         frame.setContentPane(windowPane);
         nameLabel.setText(account.getUsername());
@@ -39,10 +45,15 @@ public class AccountWindow {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                InteractClass interactClass = new InteractClass();
-                interactClass.init();
+                AbstractInteractor interactClass;
+                if (getIsSoapUsed()){
+                    interactClass = new InteractClassSoap();
+                } else {
+                    interactClass = new InteractClassRest();
+                }
                 RemoveAccountRequest request = new RemoveAccountRequest();
                 request.setAccountId(account.getId());
+                request.setUsername(account.getUsername());
                 interactClass.removeAccount(request);
                 listOfAccounts.remove(account);
                 previousWindow.update();
@@ -53,7 +64,7 @@ public class AccountWindow {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                new CartWindow(account);
+                new CartWindow(account, getIsSoapUsed());
             }
         });
         printButton.addMouseListener(new MouseAdapter() {

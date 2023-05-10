@@ -1,15 +1,17 @@
 package lt.viko.eif.nlavkart.internetShopClient.GUI;
 
+import lt.viko.eif.nlavkart.internetShopClient.GUI.Inheritances.ServiceUsageVar;
+import lt.viko.eif.nlavkart.internetShopClient.GUI.Inheritances.UpdateFunc;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.ItemLine;
 import lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents.ItemLineListRenderer;
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.Account;
+import lt.viko.eif.nlavkart.internetShopClient.generated.Account;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
-public class CartWindow implements AbstractWindow {
+public class CartWindow extends ServiceUsageVar implements UpdateFunc {
     private Account account;
 
     private int numOfItems;
@@ -22,7 +24,7 @@ public class CartWindow implements AbstractWindow {
 
     private DefaultListModel<ItemLine> listModel;
 
-    public CartWindow(Account account) {
+    public CartWindow(Account account, boolean useSoap) {
         this.account = account;
         frame = new JFrame("CartWindow");
         frame.setContentPane(cartWindowPane);
@@ -32,6 +34,7 @@ public class CartWindow implements AbstractWindow {
         frame.pack();
         frame.setVisible(true);
 
+        setIsSoapUsed(useSoap);
         scrollPane.setViewportView(list1);
         listModel = new DefaultListModel<>();
         list1.setModel(listModel);
@@ -54,7 +57,7 @@ public class CartWindow implements AbstractWindow {
                         return;
                     }
                     ItemLine itemLine = (ItemLine) list1.getSelectedValue();
-                    new ItemWindowCart(account, itemLine.item, CartWindow.this);
+                    new ItemWindowCart(account, itemLine.item, CartWindow.this, getIsSoapUsed());
                     if (!account.getCart().getItems().contains(itemLine.item)) {
                         listModel.removeElement(itemLine);
                     }

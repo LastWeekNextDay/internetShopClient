@@ -1,6 +1,6 @@
 package lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents;
 
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.Item;
+import lt.viko.eif.nlavkart.internetShopClient.generated.Item;
 
 import javax.swing.*;
 

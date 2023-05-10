@@ -1,11 +1,8 @@
 package lt.viko.eif.nlavkart.internetShopClient.GUI.MixedComponents;
 
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.Account;
+import lt.viko.eif.nlavkart.internetShopClient.generated.Account;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class AccountLine {
     public Account account;

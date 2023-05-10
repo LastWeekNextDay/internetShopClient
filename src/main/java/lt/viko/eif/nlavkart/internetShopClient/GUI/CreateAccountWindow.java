@@ -1,7 +1,11 @@
 package lt.viko.eif.nlavkart.internetShopClient.GUI;
 
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.*;
-import lt.viko.eif.nlavkart.internetShopClient.SOAP.forClient.InteractClass;
+import lt.viko.eif.nlavkart.internetShopClient.AbstractInteractor.AbstractInteractor;
+import lt.viko.eif.nlavkart.internetShopClient.GUI.Inheritances.ServiceUsageVar;
+import lt.viko.eif.nlavkart.internetShopClient.REST.forClient.InteractClassRest;
+import lt.viko.eif.nlavkart.internetShopClient.SOAP.forClient.InteractClassSoap;
+import lt.viko.eif.nlavkart.internetShopClient.generated.CreateAccountRequest;
+import lt.viko.eif.nlavkart.internetShopClient.generated.CreateAccountResponse;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -9,7 +13,7 @@ import javax.swing.event.DocumentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class CreateAccountWindow {
+public class CreateAccountWindow extends ServiceUsageVar {
     private JPanel panel;
     private JTextField usernameField;
     private JLabel usernameLabel;
@@ -22,13 +26,15 @@ public class CreateAccountWindow {
 
     private JFrame frame;
 
-    public CreateAccountWindow() {
+    public CreateAccountWindow(boolean useSoap) {
         frame = new JFrame("CreateAccountWindow");
         frame.setContentPane(panel);
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         frame.setSize(300, 400);
+
+        setIsSoapUsed(useSoap);
 
         createAccountButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -47,8 +53,12 @@ public class CreateAccountWindow {
                     JOptionPane.showMessageDialog(frame, "Passwords do not match");
                     return;
                 }
-                InteractClass interactClass = new InteractClass();
-                interactClass.init();
+                AbstractInteractor interactClass;
+                if (getIsSoapUsed()){
+                    interactClass = new InteractClassSoap();
+                } else {
+                    interactClass = new InteractClassRest();
+                }
                 CreateAccountRequest request = new CreateAccountRequest();
                 request.setUsername(usernameField.getText());
                 request.setPassword(String.valueOf(passField.getPassword()));
